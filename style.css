@@ -30,7 +30,7 @@ body {
 }
 
 .avatar {
-    background-image: url("my.png");
+    background-image: url("img/my.png");
     background-size: cover;
     /* растянуть под размер блока */
     background-position: center;
@@ -323,4 +323,5 @@ h1 {
     }
 
 }
+
 
