@@ -4,296 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV - Разработчик</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0d1117;
-            min-height: 100vh;
-            padding: 20px;
-            color: #c9d1d9;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: #161b22;
-            border-radius: 8px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.4);
-            overflow: hidden;
-            border: 1px solid #30363d;
-        }
-
-        .header {
-            background: #21262d;
-            padding: 40px;
-            text-align: center;
-            border-bottom: 1px solid #30363d;
-        }
-
-        .avatar {
-            background-image: url(img/my.png);
-            background-size: cover;    /* растянуть под размер блока */
-            background-position: center; /* выровнять по центру */
-            background-repeat: no-repeat;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 40px;
-            font-weight: bold;
-            border: 2px solid #30363d;
-
-        }
-
-        h1 {
-            font-size: 32px;
-            margin-bottom: 8px;
-            color: #c9d1d9;
-            font-weight: 600;
-        }
-
-        .subtitle {
-            font-size: 16px;
-            color: #8b949e;
-        }
-
-        .content {
-            padding: 40px;
-        }
-
-        .section {
-            margin-bottom: 40px;
-        }
-
-        .section:last-child {
-            margin-bottom: 0;
-        }
-
-        .section-title {
-            font-size: 20px;
-            color: #58a6ff;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #30363d;
-            font-weight: 600;
-        }
-
-        .about-text {
-            line-height: 1.7;
-            color: #8b949e;
-            font-size: 15px;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .skill-category {
-            background: #21262d;
-            padding: 20px;
-            border-radius: 6px;
-            border: 1px solid #30363d;
-        }
-
-        .skill-category h3 {
-            color: #c9d1d9;
-            margin-bottom: 12px;
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        .skill-tag {
-            display: inline-block;
-            background: #30363d;
-            padding: 6px 12px;
-            margin: 4px 4px 4px 0;
-            border-radius: 4px;
-            font-size: 13px;
-            color: #8b949e;
-        }
-
-        .project-card {
-            background: #21262d;
-            padding: 20px;
-            border-radius: 6px;
-            margin-bottom: 15px;
-            border: 1px solid #30363d;
-            transition: border-color 0.2s ease;
-            cursor: pointer;
-        }
-
-        .project-card:hover {
-            border-color: #58a6ff;
-        }
-
-        .project-card h3 {
-            color: #58a6ff;
-            margin-bottom: 8px;
-            font-size: 18px;
-            font-weight: 600;
-        }
-
-        .project-card p {
-            color: #8b949e;
-            line-height: 1.6;
-            font-size: 14px;
-        }
-
-        .project-tech {
-            display: inline-block;
-            background: #30363d;
-            color: #8b949e;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 12px;
-            margin-top: 10px;
-            margin-right: 6px;
-        }
-
-        .education-item {
-            background: #21262d;
-            padding: 20px;
-            border-radius: 6px;
-            margin-bottom: 15px;
-            border: 1px solid #30363d;
-        }
-
-        .education-item h3 {
-            color: #c9d1d9;
-            margin-bottom: 8px;
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        .education-item p {
-            color: #8b949e;
-            line-height: 1.6;
-            font-size: 14px;
-            margin-bottom: 4px;
-        }
-
-        .languages {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-
-        .language-item {
-            background: #21262d;
-            padding: 15px;
-            border-radius: 6px;
-            border: 1px solid #30363d;
-        }
-
-        .language-item h3 {
-            color: #c9d1d9;
-            margin-bottom: 6px;
-            font-size: 15px;
-            font-weight: 600;
-        }
-
-        .language-level {
-            color: #8b949e;
-            font-size: 14px;
-        }
-
-        .contact-section {
-            background: #21262d;
-            padding: 25px;
-            border-radius: 6px;
-            border: 1px solid #30363d;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 10px 0;
-            color: #8b949e;
-            font-size: 14px;
-            border-bottom: 1px solid #30363d;
-        }
-
-        .contact-item:last-child {
-            border-bottom: none;
-        }
-
-        .contact-icon {
-            color: #58a6ff;
-            width: 20px;
-            text-align: center;
-        }
-
-        .github-link {
-            text-align: center;
-            margin-top: 30px;
-            padding: 20px;
-            background: #21262d;
-            border-radius: 6px;
-            border: 1px solid #30363d;
-        }
-
-        .github-btn {
-            display: inline-block;
-            background: #238636;
-            color: white;
-            padding: 10px 24px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 14px;
-            transition: background 0.2s ease;
-        }
-
-        .github-btn:hover {
-            background: #2ea043;
-        }
-
-        @media (max-width: 768px) {
-            .header {
-                padding: 30px 20px;
-            }
-
-            h1 {
-                font-size: 28px;
-            }
-
-            .content {
-                padding: 30px 20px;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .languages {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <div class="header">
             <div class="avatar"></div>
-            <h1>Разработчик Программного Обеспечения</h1>
+            <h1>Бехруз Мухаммаджонов</h1>
             <p class="subtitle">Full-Stack Developer | Desktop & Web Applications</p>
         </div>
 
         <div class="content">
             <div class="section">
-                <h2 class="section-title">О себе</h2>
+                <h2 class="section-title"># О себе</h2>
                 <p class="about-text">
                     Разработчик программного обеспечения с опытом создания desktop и web приложений. 
                     Специализируюсь на разработке многофункциональных приложений с использованием 
@@ -302,8 +25,88 @@
                 </p>
             </div>
 
+            <section class="skills-section">
+                <h2 class="section-title"># Навыки и Инструменты</h2>
+
+                <div class="skills-grid">
+
+                    <!-- Языки программирования -->
+                    <div class="skills-card">
+                        <h3 class="skills-card__title">💻 Языки программирования:</h3>
+                        <ul class="skills-list">
+                            <li class="skills-list__item">Python</li>
+                            <li class="skills-list__item">JavaScript</li>
+                            <li class="skills-list__item">C++</li>
+                            <li class="skills-list__item">SQL (PostgreSQL, MySQL, SQLite)</li>
+                        </ul>
+                    </div>
+
+                    <!-- Веб-разработка -->
+                    <div class="skills-card">
+                        <h3 class="skills-card__title">🌐 Веб-разработка:</h3>
+                        <strong class="skills-card__subtitle">Frontend:</strong>
+                        <ul class="skills-list">
+                            <li class="skills-list__item">HTML5 / CSS3</li>
+                            <li class="skills-list__item">JavaScript</li>
+                        </ul>
+                        <strong class="skills-card__subtitle">Backend:</strong>
+                        <ul class="skills-list">
+                            <li class="skills-list__item">Node.js</li>
+                            <li class="skills-list__item">Flask / FastAPI</li>
+                            <li class="skills-list__item">REST API</li>
+                        </ul>
+                    </div>
+
+                    <!-- Базы данных -->
+                    <div class="skills-card">
+                        <h3 class="skills-card__title">🗄️ Базы данных:</h3>
+                        <ul class="skills-list">
+                            <li class="skills-list__item">PostgreSQL</li>
+                            <li class="skills-list__item">MySQL</li>
+                            <li class="skills-list__item">SQLite</li>
+                            <li class="skills-list__item">Firebase Firestore</li>
+                        </ul>
+                    </div>
+
+                    <!-- Инструменты -->
+                    <div class="skills-card">
+                        <h3 class="skills-card__title">🛠️ Инструменты разработки:</h3>
+                        <ul class="skills-list">
+                            <li class="skills-list__item">Git / GitHub / GitLab</li>
+                            <li class="skills-list__item">Docker / Docker Compose</li>
+                            <li class="skills-list__item">Visual Studio</li>
+                            <li class="skills-list__item">Adobe PhotoShop</li>
+                            <li class="skills-list__item">Postman</li>
+                            <li class="skills-list__item">Figma</li>
+                        </ul>
+                    </div>
+
+                    <!-- Серверные технологии -->
+                    <div class="skills-card">
+                        <h3 class="skills-card__title">☁️ Серверные технологии:</h3>
+                        <ul class="skills-list">
+                            <li class="skills-list__item">Linux (Ubuntu / Debian / Fedora / Manjaro)</li>
+                            <li class="skills-list__item">Nginx / Apache</li>
+                            <li class="skills-list__item">VPS: Proxmox, Hetzner, DigitalOcean</li>
+                            <li class="skills-list__item">CI/CD GitHub Actions</li>
+                        </ul>
+                    </div>
+
+                    <!-- AI-инструменты -->
+                    <div class="skills-card">
+                        <h3 class="skills-card__title">🤖 AI-инструменты:</h3>
+                        <ul class="skills-list">
+                            <li class="skills-list__item">OpenAI API</li>
+                            <li class="skills-list__item">Google Gemini API</li>
+                            <li class="skills-list__item">LLM интеграции</li>
+                            <li class="skills-list__item">Создание чат-ботов</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>  
+
             <div class="section">
-                <h2 class="section-title">Проекты</h2>
+                <h2 class="section-title"># Проекты</h2>
                 
                 <div class="project-card" onclick="window.open('https://github.com/beorht/MusicCreater', '_blank')">
                     <h3>MusicCreater</h3>
@@ -324,6 +127,27 @@
                     <span class="project-tech">API Integration</span>
                 </div>
 
+                <div class="project-card" onclick="window.open('https://github.com/beorht/FileServer', '_blank')">
+                    <h3>File Server</h3>
+                    <p>
+                        Облачные сервер для хранение файлов на серверном компьютере и предовать по локальной сети.
+                    </p>
+                    <span class="project-tech">C++</span>
+                    <span class="project-tech">Network Programming</span>
+                    <span class="project-tech">JavaScript</span>
+                    <span class="project-tech">Html</span>
+                    <span class="project-tech">CSS</span>
+                </div>
+
+                <div class="project-card" onclick="window.open('https://github.com/beorht/Server', '_blank')">
+                    <h3>Server</h3>
+                    <p>
+                        Простой сервер в два вариации на С++ и на Python.
+                    </p>
+                    <span class="project-tech">Python</span>
+                    <span class="project-tech">C++</span>
+                </div>
+
                 <div class="project-card" onclick="window.open('https://github.com/beorht/ScreenShare', '_blank')">
                     <h3>ScreenShare</h3>
                     <p>
@@ -335,7 +159,7 @@
             </div>
 
             <div class="section">
-                <h2 class="section-title">Технические навыки</h2>
+                <h2 class="section-title"># Технические навыки</h2>
                 <div class="skills-grid">
                     <div class="skill-category">
                         <h3>Языки программирования</h3>
@@ -376,7 +200,7 @@
             </div>
 
             <div class="section">
-                <h2 class="section-title">Образование</h2>
+                <h2 class="section-title"># Образование</h2>
                 
                 <div class="education-item">
                     <h3>РГПУ им. А. И. Герцена</h3>
@@ -392,7 +216,7 @@
             </div>
 
             <div class="section">
-                <h2 class="section-title">Языки</h2>
+                <h2 class="section-title"># Языки</h2>
                 <div class="languages">
                     <div class="language-item">
                         <h3>Узбекский</h3>
@@ -410,7 +234,7 @@
             </div>
 
             <div class="section">
-                <h2 class="section-title">Контактная информация</h2>
+                <h2 class="section-title"># Контактная информация</h2>
                 <div class="contact-section">
                     <div class="contact-item">
                         <span class="contact-icon">📞</span>
