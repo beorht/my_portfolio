@@ -30,7 +30,7 @@ body {
 }
 
 .avatar {
-    background-image: url(img/my.png);
+    background-image: url(my.png);
     background-size: cover;
     /* растянуть под размер блока */
     background-position: center;
@@ -321,4 +321,5 @@ h1 {
     .languages {
         grid-template-columns: 1fr;
     }
+
 }
