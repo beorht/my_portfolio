@@ -5,17 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV - Разработчик</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        // Prevent auto-scroll on page load
+        if (history.scrollRestoration) {
+            history.scrollRestoration = 'manual';
+        }
+        window.onbeforeunload = function () {
+            window.scrollTo(0, 0);
+        }
+    </script>
 </head>
 <body>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar-nav">
+        <a href="#main">MAIN</a>
+        <a href="#about">ABOUT</a>
+        <a href="#skills">SKILLS</a>
+        <a href="#projects">PROJECTS</a>
+        <a href="#education">EDUCATION</a>
+        <a href="#contact">CONTACT</a>
+    </nav>
+
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <button>SIGN IN</button>
+        <button>EN</button>
+    </nav>
+
     <div class="container">
-        <div class="header">
-            <div class="avatar"></div>
-            <h1>Бехруз Мухаммаджонов</h1>
-            <p class="subtitle">Full-Stack Developer | Desktop & Web Applications</p>
+        <div id="main" class="header">
+            <span class="cyan-circle"></span>
+            <span class="cyan-circle"></span>
+            <span class="cyan-circle"></span>
+            <span class="cyan-circle"></span>
+            <div class="hero-content">
+                                <div class="hero-right">
+                                                            <h1>
+                                                                <span class="line1">Hello</span>
+                                                                <span class="line2">I am</span>
+                                                                <span class="line3">Behruz</span>
+                                                            </h1>                                    <p class="subtitle">Full-Stack Developer | Desktop & Web Applications</p>
+                                </div>
+                                <div class="hero-left">
+                                    <div class="back-light">
+                                        <div class="avatar"></div>
+                                    </div>
+                                </div>
+
+            </div>
         </div>
 
         <div class="content">
-            <div class="section">
+            <div id="about" class="section">
                 <h2 class="section-title"># О себе</h2>
                 <p class="about-text">
                     Разработчик программного обеспечения с опытом создания desktop и web приложений. 
@@ -25,87 +66,104 @@
                 </p>
             </div>
 
-            <section class="skills-section">
+            <section id="skills" class="section">
                 <h2 class="section-title"># Навыки и Инструменты</h2>
-
                 <div class="skills-grid">
-
-                    <!-- Языки программирования -->
-                    <div class="skills-card">
-                        <h3 class="skills-card__title">💻 Языки программирования:</h3>
-                        <ul class="skills-list">
-                            <li class="skills-list__item">Python</li>
-                            <li class="skills-list__item">JavaScript</li>
-                            <li class="skills-list__item">C++</li>
-                            <li class="skills-list__item">SQL (PostgreSQL, MySQL, SQLite)</li>
-                        </ul>
+                    <div class="skill-category">
+                        <h3>Языки программирования</h3>
+                        <p class="skill-description">Владение современными языками для разработки различных типов приложений</p>
+                        <div>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">C++</span>
+                            <span class="skill-tag">C#</span>
+                            <span class="skill-tag">SQL</span>
+                        </div>
                     </div>
 
-                    <!-- Веб-разработка -->
-                    <div class="skills-card">
-                        <h3 class="skills-card__title">🌐 Веб-разработка:</h3>
-                        <strong class="skills-card__subtitle">Frontend:</strong>
-                        <ul class="skills-list">
-                            <li class="skills-list__item">HTML5 / CSS3</li>
-                            <li class="skills-list__item">JavaScript</li>
-                        </ul>
-                        <strong class="skills-card__subtitle">Backend:</strong>
-                        <ul class="skills-list">
-                            <li class="skills-list__item">Node.js</li>
-                            <li class="skills-list__item">Flask / FastAPI</li>
-                            <li class="skills-list__item">REST API</li>
-                        </ul>
+                    <div class="skill-category">
+                        <h3>Frontend разработка</h3>
+                        <p class="skill-description">Создание современных адаптивных веб-интерфейсов с чистым кодом</p>
+                        <div>
+                            <span class="skill-tag">HTML5</span>
+                            <span class="skill-tag">CSS3</span>
+                            <span class="skill-tag">JavaScript</span>
+                        </div>
                     </div>
 
-                    <!-- Базы данных -->
-                    <div class="skills-card">
-                        <h3 class="skills-card__title">🗄️ Базы данных:</h3>
-                        <ul class="skills-list">
-                            <li class="skills-list__item">PostgreSQL</li>
-                            <li class="skills-list__item">MySQL</li>
-                            <li class="skills-list__item">SQLite</li>
-                            <li class="skills-list__item">Firebase Firestore</li>
-                        </ul>
+                    <div class="skill-category">
+                        <h3>Backend разработка</h3>
+                        <p class="skill-description">Разработка серверной логики и API с использованием популярных фреймворков</p>
+                        <div>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Flask</span>
+                            <span class="skill-tag">FastAPI</span>
+                            <span class="skill-tag">REST API</span>
+                        </div>
                     </div>
 
-                    <!-- Инструменты -->
-                    <div class="skills-card">
-                        <h3 class="skills-card__title">🛠️ Инструменты разработки:</h3>
-                        <ul class="skills-list">
-                            <li class="skills-list__item">Git / GitHub / GitLab</li>
-                            <li class="skills-list__item">Docker / Docker Compose</li>
-                            <li class="skills-list__item">Visual Studio</li>
-                            <li class="skills-list__item">Adobe PhotoShop</li>
-                            <li class="skills-list__item">Postman</li>
-                            <li class="skills-list__item">Figma</li>
-                        </ul>
+                    <div class="skill-category">
+                        <h3>Базы данных</h3>
+                        <p class="skill-description">Проектирование и управление реляционными и NoSQL базами данных</p>
+                        <div>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">SQLite</span>
+                            <span class="skill-tag">Firebase Firestore</span>
+                        </div>
                     </div>
 
-                    <!-- Серверные технологии -->
-                    <div class="skills-card">
-                        <h3 class="skills-card__title">☁️ Серверные технологии:</h3>
-                        <ul class="skills-list">
-                            <li class="skills-list__item">Linux (Ubuntu / Debian / Fedora / Manjaro)</li>
-                            <li class="skills-list__item">Nginx / Apache</li>
-                            <li class="skills-list__item">VPS: Proxmox, Hetzner, DigitalOcean</li>
-                            <li class="skills-list__item">CI/CD GitHub Actions</li>
-                        </ul>
+                    <div class="skill-category">
+                        <h3>Инструменты разработки</h3>
+                        <p class="skill-description">Профессиональные инструменты для эффективной разработки и командной работы</p>
+                        <div>
+                            <span class="skill-tag">Git/GitHub</span>
+                            <span class="skill-tag">GitLab</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Visual Studio</span>
+                            <span class="skill-tag">Postman</span>
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">Adobe Photoshop</span>
+                        </div>
                     </div>
 
-                    <!-- AI-инструменты -->
-                    <div class="skills-card">
-                        <h3 class="skills-card__title">🤖 AI-инструменты:</h3>
-                        <ul class="skills-list">
-                            <li class="skills-list__item">OpenAI API</li>
-                            <li class="skills-list__item">Google Gemini API</li>
-                            <li class="skills-list__item">LLM интеграции</li>
-                            <li class="skills-list__item">Создание чат-ботов</li>
-                        </ul>
+                    <div class="skill-category">
+                        <h3>Desktop разработка</h3>
+                        <p class="skill-description">Создание кроссплатформенных desktop приложений с богатым функционалом</p>
+                        <div>
+                            <span class="skill-tag">.NET Framework</span>
+                            <span class="skill-tag">WinForms</span>
+                            <span class="skill-tag">WPF</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Серверные технологии</h3>
+                        <p class="skill-description">Настройка и управление серверами, деплой приложений на различных платформах</p>
+                        <div>
+                            <span class="skill-tag">Linux</span>
+                            <span class="skill-tag">Nginx</span>
+                            <span class="skill-tag">Apache</span>
+                            <span class="skill-tag">Proxmox</span>
+                            <span class="skill-tag">Hetzner</span>
+                            <span class="skill-tag">DigitalOcean</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>AI-инструменты</h3>
+                        <p class="skill-description">Интеграция искусственного интеллекта и создание умных чат-ботов</p>
+                        <div>
+                            <span class="skill-tag">OpenAI API</span>
+                            <span class="skill-tag">Google Gemini API</span>
+                            <span class="skill-tag">LLM интеграции</span>
+                            <span class="skill-tag">Создание чат-ботов</span>
+                        </div>
                     </div>
                 </div>
             </section>  
 
-            <div class="section">
+            <div id="projects" class="section">
                 <h2 class="section-title"># Проекты</h2>
                 
                 <div class="project-card" onclick="window.open('https://github.com/beorht/MusicCreater', '_blank')">
@@ -158,48 +216,7 @@
                 </div>
             </div>
 
-            <div class="section">
-                <h2 class="section-title"># Технические навыки</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3>Языки программирования</h3>
-                        <div>
-                            <span class="skill-tag">C#</span>
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">C++</span>
-                        </div>
-                    </div>
-
-                    <div class="skill-category">
-                        <h3>Desktop разработка</h3>
-                        <div>
-                            <span class="skill-tag">.NET Framework</span>
-                            <span class="skill-tag">WinForms</span>
-                            <span class="skill-tag">WPF</span>
-                        </div>
-                    </div>
-
-                    <div class="skill-category">
-                        <h3>Инструменты</h3>
-                        <div>
-                            <span class="skill-tag">Git/GitHub</span>
-                            <span class="skill-tag">Visual Studio</span>
-                            <span class="skill-tag">API Development</span>
-                        </div>
-                    </div>
-
-                    <div class="skill-category">
-                        <h3>Области знаний</h3>
-                        <div>
-                            <span class="skill-tag">Сетевые технологии</span>
-                            <span class="skill-tag">Информационные системы</span>
-                            <span class="skill-tag">Multimedia</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
+            <div id="education" class="section">
                 <h2 class="section-title"># Образование</h2>
                 
                 <div class="education-item">
@@ -233,21 +250,41 @@
                 </div>
             </div>
 
-            <div class="section">
+            <div id="contact" class="section">
                 <h2 class="section-title"># Контактная информация</h2>
                 <div class="contact-section">
+                    <div class="contact-decorative-line"></div>
                     <div class="contact-item">
                         <span class="contact-icon">📞</span>
-                        <span> <strong>Тел. номер:</strong> (90) 125-22-56</span>
+                        <div class="contact-info">
+                            <span class="contact-label">Тел. номер</span>
+                            <span class="contact-value">(90) 125-22-56</span>
+                        </div>
                     </div>
                     <div class="contact-item">
                         <span class="contact-icon">📱</span>
-                        <span> <strong>Доп. номер:</strong> (95) 014-22-56</span>
+                        <div class="contact-info">
+                            <span class="contact-label">Доп. номер</span>
+                            <span class="contact-value">(95) 014-22-56</span>
+                        </div>
                     </div>
                     <div class="contact-item">
                         <span class="contact-icon">✉️</span>
-                        <span> <strong>E-mail:</strong> ben.tn2002@mail.ru</span>
+                        <div class="contact-info">
+                            <span class="contact-label">E-mail</span>
+                            <span class="contact-value">ben.tn2002@mail.ru</span>
+
+                        </div>
                     </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">✉️</span>
+                        <div class="contact-info">
+                            <span class="contact-label">E-mail</span>
+                            <span class="contact-value">tenison01112002@gmail.ru</span>
+
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -258,5 +295,52 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Ensure page starts at top on load
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                window.scrollTo(0, 0);
+            }, 0);
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Active navigation on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.section, section[id]');
+            const navLinks = document.querySelectorAll('.sidebar-nav a');
+
+            let currentSection = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
