@@ -238,6 +238,282 @@ body {
     line-height: 1.5;
 }
 
+/* Floating Fish Animation */
+.fish-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.fish {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    opacity: 0.85;
+    filter: drop-shadow(0 0 15px rgba(255, 107, 157, 0.5));
+}
+
+.fish-body {
+    width: 120px;
+    height: 50px;
+    background: linear-gradient(165deg,
+        rgba(150, 150, 150, 0.3) 0%,
+        rgba(255, 107, 157, 0.4) 20%,
+        rgba(255, 140, 100, 0.7) 45%,
+        rgba(255, 165, 0, 0.9) 60%,
+        rgba(255, 107, 157, 0.8) 80%,
+        rgba(150, 150, 150, 0.2) 100%
+    );
+    border-radius: 55% 45% 45% 55% / 70% 70% 30% 30%;
+    position: relative;
+    box-shadow:
+        inset 0 -5px 15px rgba(255, 107, 157, 0.4),
+        inset 0 5px 10px rgba(255, 165, 0, 0.3),
+        0 0 40px rgba(255, 107, 157, 0.6),
+        0 0 70px rgba(255, 140, 100, 0.4),
+        0 0 100px rgba(255, 165, 0, 0.3);
+    animation: fishGlow 4s ease-in-out infinite, fishFloat 6s ease-in-out infinite;
+}
+
+.fish-body::before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.3) 40%, transparent 70%);
+    border-radius: 50%;
+    top: 12px;
+    right: 15px;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+.fish-body::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(255, 140, 100, 0.3) 30%,
+        rgba(255, 165, 0, 0.5) 50%,
+        rgba(255, 140, 100, 0.3) 70%,
+        transparent 100%
+    );
+    top: 30%;
+    left: 0;
+    border-radius: 50%;
+    filter: blur(3px);
+}
+
+.fish-tail {
+    width: 0;
+    height: 0;
+    border-left: 45px solid rgba(255, 107, 157, 0.6);
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    position: absolute;
+    left: -35px;
+    filter: blur(2px) drop-shadow(0 0 10px rgba(255, 107, 157, 0.6));
+    animation: tailWave 2s ease-in-out infinite;
+    transform-origin: right center;
+}
+
+.fish-tail::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 35px solid rgba(255, 165, 0, 0.5);
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    left: 5px;
+    top: -15px;
+    filter: blur(1px);
+}
+
+.fish-fin {
+    width: 25px;
+    height: 35px;
+    background: linear-gradient(135deg,
+        rgba(255, 107, 157, 0.5) 0%,
+        rgba(255, 165, 0, 0.6) 50%,
+        rgba(255, 107, 157, 0.4) 100%
+    );
+    border-radius: 0 70% 70% 0;
+    position: absolute;
+    top: 8px;
+    left: 30px;
+    filter: blur(1.5px);
+    animation: finWave 3s ease-in-out infinite;
+    transform-origin: left center;
+    box-shadow: 0 0 15px rgba(255, 165, 0, 0.4);
+}
+
+.fish-fin::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 28px;
+    background: linear-gradient(135deg,
+        rgba(255, 140, 100, 0.4) 0%,
+        rgba(255, 165, 0, 0.5) 50%,
+        transparent 100%
+    );
+    border-radius: 0 60% 60% 0;
+    top: 50%;
+    left: -15px;
+    transform: translateY(-50%);
+    filter: blur(2px);
+}
+
+@keyframes fishGlow {
+    0%, 100% {
+        box-shadow:
+            inset 0 -5px 15px rgba(255, 107, 157, 0.4),
+            inset 0 5px 10px rgba(255, 165, 0, 0.3),
+            0 0 40px rgba(255, 107, 157, 0.6),
+            0 0 70px rgba(255, 140, 100, 0.4),
+            0 0 100px rgba(255, 165, 0, 0.3);
+    }
+    50% {
+        box-shadow:
+            inset 0 -5px 20px rgba(255, 107, 157, 0.6),
+            inset 0 5px 15px rgba(255, 165, 0, 0.5),
+            0 0 60px rgba(255, 107, 157, 0.8),
+            0 0 100px rgba(255, 140, 100, 0.6),
+            0 0 140px rgba(255, 165, 0, 0.5);
+    }
+}
+
+@keyframes fishFloat {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-8px) rotate(1deg);
+    }
+    75% {
+        transform: translateY(8px) rotate(-1deg);
+    }
+}
+
+@keyframes tailWave {
+    0%, 100% {
+        transform: skewY(0deg);
+    }
+    25% {
+        transform: skewY(-8deg);
+    }
+    75% {
+        transform: skewY(8deg);
+    }
+}
+
+@keyframes finWave {
+    0%, 100% {
+        transform: scaleY(1);
+    }
+    50% {
+        transform: scaleY(1.15);
+    }
+}
+
+@keyframes swimAcross1 {
+    0% {
+        left: -15%;
+        top: 20%;
+    }
+    100% {
+        left: 115%;
+        top: 25%;
+    }
+}
+
+@keyframes swimAcross2 {
+    0% {
+        left: 115%;
+        top: 60%;
+        transform: scaleX(-1);
+    }
+    100% {
+        left: -15%;
+        top: 55%;
+        transform: scaleX(-1);
+    }
+}
+
+@keyframes swimAcross3 {
+    0% {
+        left: -15%;
+        top: 70%;
+    }
+    100% {
+        left: 115%;
+        top: 75%;
+    }
+}
+
+@keyframes swimAcross4 {
+    0% {
+        left: 115%;
+        top: 35%;
+        transform: scaleX(-1);
+    }
+    100% {
+        left: -15%;
+        top: 40%;
+        transform: scaleX(-1);
+    }
+}
+
+@keyframes swimAcross5 {
+    0% {
+        left: -15%;
+        top: 85%;
+    }
+    100% {
+        left: 115%;
+        top: 80%;
+    }
+}
+
+.fish-1 {
+    animation: swimAcross1 25s linear infinite;
+    left: -15%;
+}
+
+.fish-2 {
+    animation: swimAcross2 30s linear infinite;
+    animation-delay: 5s;
+    left: 115%;
+}
+
+.fish-3 {
+    animation: swimAcross3 28s linear infinite;
+    animation-delay: 10s;
+    opacity: 0.5;
+    left: -15%;
+}
+
+.fish-4 {
+    animation: swimAcross4 32s linear infinite;
+    animation-delay: 15s;
+    opacity: 0.6;
+    left: 115%;
+}
+
+.fish-5 {
+    animation: swimAcross5 27s linear infinite;
+    animation-delay: 20s;
+    opacity: 0.55;
+    left: -15%;
+}
+
 h1 {
     font-size: 42px;
     color: var(--text-white);
@@ -551,118 +827,176 @@ h1 {
     font-size: 15px;
 }
 
-.contact-section {
-    position: relative;
-    background: var(--background-card);
-    padding: 50px 40px;
-    min-height: 300px;
+/* Terminal Window Styles */
+.terminal-window {
+    background: #1a1a1a;
     border-radius: 12px;
-    border: 1px solid var(--border-primary);
     overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    border: 1px solid #2a2a2a;
+    transition: all 0.3s ease;
+    max-width: 1200px;
+    margin: 40px auto;
 }
 
-.contact-section::before {
-    content: '';
-    position: absolute;
-    top: -50px;
-    right: -50px;
-    width: 200px;
-    height: 200px;
-    background: radial-gradient(circle, var(--shadow-tertiary) 0%, transparent 70%);
-    border-radius: 50%;
-    z-index: 0;
+.terminal-window:hover {
+    box-shadow: 0 15px 50px rgba(223, 160, 93, 0.2);
+    border-color: #3a3a3a;
 }
 
-.contact-section::after {
-    content: '';
-    position: absolute;
-    bottom: -30px;
-    left: -30px;
-    width: 150px;
-    height: 150px;
-    background: radial-gradient(circle, var(--shadow-quaternary) 0%, transparent 70%);
-    border-radius: 50%;
-    z-index: 0;
-}
-
-.contact-item {
-    position: relative;
+.terminal-header {
+    background: #2a2a2a;
+    padding: 12px 16px;
     display: flex;
     align-items: center;
-    gap: 20px;
-    padding: 25px 20px;
-    margin-bottom: 15px;
-    color: var(--text-secondary);
-    font-size: 16px;
-    background: var(--background-secondary);
-    border-radius: 8px;
-    border: 1px solid transparent;
-    transition: all 0.3s ease;
-    z-index: 1;
+    gap: 12px;
+    border-bottom: 1px solid #333;
 }
 
-.contact-item:last-child {
-    margin-bottom: 0;
+.terminal-buttons {
+    display: flex;
+    gap: 8px;
 }
 
-.contact-item:hover {
-    color: var(--accent-primary);
-    background: var(--shadow-tertiary);
-    border-color: var(--accent-primary);
-    transform: translateX(10px);
-    box-shadow: 0 5px 15px var(--shadow-secondary);
+.terminal-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: block;
+    transition: all 0.2s ease;
 }
 
-.contact-icon {
+.terminal-button:hover {
+    opacity: 0.8;
+}
+
+.terminal-button.close {
+    background: #ff5f56;
+}
+
+.terminal-button.minimize {
+    background: #ffbd2e;
+}
+
+.terminal-button.maximize {
+    background: #27c93f;
+}
+
+.terminal-title {
+    color: #e0e0e0;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    flex: 1;
+    text-align: center;
+}
+
+.terminal-menu {
+    color: #8b949e;
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    background: var(--shadow-secondary);
-    border-radius: 10px;
-    color: var(--accent-primary);
-    font-size: 24px;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
+    cursor: pointer;
+    transition: color 0.2s ease;
 }
 
-.contact-item:hover .contact-icon {
-    background: var(--accent-primary);
-    color: var(--background-secondary);
-    transform: rotate(10deg) scale(1.1);
+.terminal-menu:hover {
+    color: #c0c0c0;
 }
 
-.contact-info {
+.terminal-toolbar {
+    background: #1f1f1f;
+    padding: 8px 16px;
+    display: flex;
+    gap: 12px;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.toolbar-icon {
+    color: #8b949e;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.toolbar-icon:hover {
+    color: #c0c0c0;
+}
+
+.terminal-body {
+    padding: 0;
+    background: #1a1a1a;
+    overflow-x: auto;
+}
+
+.code-container {
+    display: flex;
+}
+
+.line-numbers {
+    background: #1a1a1a;
+    padding: 16px 0;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-right: 1px solid #2a2a2a;
+    user-select: none;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 20px;
+    line-height: 1.7;
+    color: #4a4a4a;
+    text-align: right;
+    min-width: 50px;
+}
+
+.line-numbers span {
+    display: block;
+}
+
+.terminal-code {
+    margin: 0;
+    padding: 16px 16px 16px 20px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 20px;
+    line-height: 1.7;
+    color: #abb2bf;
+    white-space: pre;
     flex: 1;
 }
 
-.contact-label {
-    font-size: 13px;
-    color: var(--text-tertiary);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 500;
+/* JSON Syntax Highlighting - VS Code Dark+ Theme */
+.json-key {
+    color: #d19a66;
+    font-weight: 400;
 }
 
-.contact-value {
-    font-size: 18px;
-    color: var(--text-white);
-    font-weight: 600;
+.json-string {
+    color: #98c379;
 }
 
-.contact-decorative-line {
-    position: absolute;
-    top: 20px;
-    left: 0;
-    width: 4px;
-    height: calc(100% - 40px);
-    background: var(--accent-primary);
-    border-radius: 2px;
-    opacity: 0.6;
+.json-number {
+    color: #d19a66;
+}
+
+.json-boolean {
+    color: #56b6c2;
+    font-weight: 400;
+}
+
+.json-null {
+    color: #56b6c2;
+}
+
+.json-bracket {
+    color: #abb2bf;
+    font-weight: 400;
+}
+
+.json-colon {
+    color: #abb2bf;
+}
+
+.json-comma {
+    color: #abb2bf;
 }
 
 .github-link {
@@ -833,6 +1167,56 @@ h1 {
         height: 450px;
     }
 
+    /* Fish animation on mobile */
+    .fish {
+        opacity: 0.6;
+    }
+
+    .fish-body {
+        width: 70px;
+        height: 30px;
+        box-shadow:
+            inset 0 -3px 10px rgba(255, 107, 157, 0.3),
+            inset 0 3px 7px rgba(255, 165, 0, 0.2),
+            0 0 25px rgba(255, 107, 157, 0.5),
+            0 0 45px rgba(255, 140, 100, 0.3);
+    }
+
+    .fish-body::before {
+        width: 5px;
+        height: 5px;
+        top: 8px;
+        right: 10px;
+    }
+
+    .fish-tail {
+        border-left: 28px solid rgba(255, 107, 157, 0.6);
+        border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        left: -22px;
+    }
+
+    .fish-tail::before {
+        border-left: 22px solid rgba(255, 165, 0, 0.5);
+        border-top: 12px solid transparent;
+        border-bottom: 12px solid transparent;
+        left: 3px;
+        top: -10px;
+    }
+
+    .fish-fin {
+        width: 15px;
+        height: 22px;
+        left: 18px;
+        top: 5px;
+    }
+
+    .fish-fin::before {
+        width: 12px;
+        height: 18px;
+        left: -10px;
+    }
+
     .content {
         padding: 40px 20px;
     }
@@ -861,6 +1245,50 @@ h1 {
 
     .top-nav {
         padding: 20px;
+    }
+
+    .terminal-window {
+        border-radius: 8px;
+    }
+
+    .terminal-header {
+        padding: 10px 12px;
+    }
+
+    .terminal-button {
+        width: 10px;
+        height: 10px;
+    }
+
+    .terminal-title {
+        font-size: 12px;
+    }
+
+    .terminal-toolbar {
+        padding: 6px 12px;
+        gap: 10px;
+    }
+
+    .toolbar-icon {
+        width: 14px;
+        height: 14px;
+    }
+
+    .line-numbers {
+        padding: 12px 8px;
+        font-size: 12px;
+        min-width: 35px;
+    }
+
+    .terminal-code {
+        padding: 12px;
+        font-size: 12px;
+        line-height: 1.6;
+    }
+
+    .terminal-menu svg {
+        width: 14px;
+        height: 14px;
     }
 }
 
