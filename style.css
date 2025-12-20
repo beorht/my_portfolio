@@ -238,280 +238,145 @@ body {
     line-height: 1.5;
 }
 
-/* Floating Fish Animation */
-.fish-container {
+/* Hero Next Button */
+.hero-next-btn {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 0;
-}
-
-.fish {
-    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
+    flex-direction: column;
     align-items: center;
-    opacity: 0.85;
-    filter: drop-shadow(0 0 15px rgba(255, 107, 157, 0.5));
+    gap: 8px;
+    padding: 25px 100px;
+    background: rgba(26, 26, 26, 0.5);
+    /*border: 2px solid var(--accent-primary);*/
+    border-radius: 50px;
+    color: var(--accent-primary);
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.4s ease;
+    z-index: 10;
+    cursor: pointer;
 }
 
-.fish-body {
-    width: 120px;
-    height: 50px;
-    background: linear-gradient(165deg,
-        rgba(150, 150, 150, 0.3) 0%,
-        rgba(255, 107, 157, 0.4) 20%,
-        rgba(255, 140, 100, 0.7) 45%,
-        rgba(255, 165, 0, 0.9) 60%,
-        rgba(255, 107, 157, 0.8) 80%,
-        rgba(150, 150, 150, 0.2) 100%
-    );
-    border-radius: 55% 45% 45% 55% / 70% 70% 30% 30%;
-    position: relative;
-    box-shadow:
-        inset 0 -5px 15px rgba(255, 107, 157, 0.4),
-        inset 0 5px 10px rgba(255, 165, 0, 0.3),
-        0 0 40px rgba(255, 107, 157, 0.6),
-        0 0 70px rgba(255, 140, 100, 0.4),
-        0 0 100px rgba(255, 165, 0, 0.3);
-    animation: fishGlow 4s ease-in-out infinite, fishFloat 6s ease-in-out infinite;
-}
-
-.fish-body::before {
+.hero-next-btn::before {
     content: '';
     position: absolute;
-    width: 8px;
-    height: 8px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.3) 40%, transparent 70%);
-    border-radius: 50%;
-    top: 12px;
-    right: 15px;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+    bottom: -150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 300px;
+    background: radial-gradient(ellipse at bottom,
+        rgba(255, 215, 0, 0.4) 0%,
+        rgba(255, 165, 0, 0.35) 5%,
+        rgba(223, 160, 93, 0.3) 15%,
+        rgba(223, 160, 93, 0.25) 25%,
+        rgba(223, 160, 93, 0.2) 35%,
+        rgba(223, 160, 93, 0.15) 45%,
+        rgba(223, 160, 93, 0.1) 55%,
+        rgba(223, 160, 93, 0.06) 65%,
+        rgba(223, 160, 93, 0.03) 75%,
+        rgba(223, 160, 93, 0.01) 85%,
+        transparent 95%,
+        transparent 100%);
+    opacity: 0;
+    pointer-events: none;
+    filter: blur(40px);
+    border-radius: 50% 50% 0 0;
+    clip-path: ellipse(50% 100% at 50% 100%);
 }
 
-.fish-body::after {
+.hero-next-btn::after {
     content: '';
-    position: absolute;
-    width: 100%;
-    height: 40%;
-    background: linear-gradient(90deg,
-        transparent 0%,
-        rgba(255, 140, 100, 0.3) 30%,
-        rgba(255, 165, 0, 0.5) 50%,
-        rgba(255, 140, 100, 0.3) 70%,
-        transparent 100%
-    );
-    top: 30%;
-    left: 0;
-    border-radius: 50%;
-    filter: blur(3px);
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(ellipse 50% 100% at bottom center,
+        rgba(255, 255, 255, 0.3) 0%,
+        rgba(255, 215, 0, 0.25) 3%,
+        rgba(255, 165, 0, 0.2) 6%,
+        rgba(223, 160, 93, 0.18) 10%,
+        rgba(223, 160, 93, 0.15) 15%,
+        rgba(223, 160, 93, 0.12) 20%,
+        rgba(223, 160, 93, 0.1) 25%,
+        rgba(223, 160, 93, 0.08) 30%,
+        rgba(223, 160, 93, 0.06) 35%,
+        rgba(223, 160, 93, 0.04) 45%,
+        rgba(223, 160, 93, 0.02) 55%,
+        rgba(223, 160, 93, 0.01) 70%,
+        transparent 85%);
+    opacity: 0;
+    pointer-events: none;
+    filter: blur(50px);
+    z-index: 5;
 }
 
-.fish-tail {
-    width: 0;
-    height: 0;
-    border-left: 45px solid rgba(255, 107, 157, 0.6);
-    border-top: 25px solid transparent;
-    border-bottom: 25px solid transparent;
-    position: absolute;
-    left: -35px;
-    filter: blur(2px) drop-shadow(0 0 10px rgba(255, 107, 157, 0.6));
-    animation: tailWave 2s ease-in-out infinite;
-    transform-origin: right center;
+.hero-next-btn:hover::before {
+    /*animation: sunriseGlow 1.5s ease-out forwards;*/
 }
 
-.fish-tail::before {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-left: 35px solid rgba(255, 165, 0, 0.5);
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-    left: 5px;
-    top: -15px;
-    filter: blur(1px);
+.hero-next-btn:hover::after {
+    animation: neonGlowRise 1.8s ease-out forwards;
 }
 
-.fish-fin {
-    width: 25px;
-    height: 35px;
-    background: linear-gradient(135deg,
-        rgba(255, 107, 157, 0.5) 0%,
-        rgba(255, 165, 0, 0.6) 50%,
-        rgba(255, 107, 157, 0.4) 100%
-    );
-    border-radius: 0 70% 70% 0;
-    position: absolute;
-    top: 8px;
-    left: 30px;
-    filter: blur(1.5px);
-    animation: finWave 3s ease-in-out infinite;
-    transform-origin: left center;
-    box-shadow: 0 0 15px rgba(255, 165, 0, 0.4);
-}
-
-.fish-fin::before {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 28px;
-    background: linear-gradient(135deg,
-        rgba(255, 140, 100, 0.4) 0%,
-        rgba(255, 165, 0, 0.5) 50%,
-        transparent 100%
-    );
-    border-radius: 0 60% 60% 0;
-    top: 50%;
-    left: -15px;
-    transform: translateY(-50%);
-    filter: blur(2px);
-}
-
-@keyframes fishGlow {
-    0%, 100% {
-        box-shadow:
-            inset 0 -5px 15px rgba(255, 107, 157, 0.4),
-            inset 0 5px 10px rgba(255, 165, 0, 0.3),
-            0 0 40px rgba(255, 107, 157, 0.6),
-            0 0 70px rgba(255, 140, 100, 0.4),
-            0 0 100px rgba(255, 165, 0, 0.3);
+@keyframes sunriseGlow {
+    0% {
+        transform: translateX(-50%) translateY(150px) scale(0.3);
+        opacity: 0;
     }
     50% {
-        box-shadow:
-            inset 0 -5px 20px rgba(255, 107, 157, 0.6),
-            inset 0 5px 15px rgba(255, 165, 0, 0.5),
-            0 0 60px rgba(255, 107, 157, 0.8),
-            0 0 100px rgba(255, 140, 100, 0.6),
-            0 0 140px rgba(255, 165, 0, 0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-50%) translateY(0) scale(1);
+        opacity: 1;
     }
 }
 
-@keyframes fishFloat {
-    0%, 100% {
-        transform: translateY(0px) rotate(0deg);
+@keyframes neonGlowRise {
+    0% {
+        transform: translateX(-50%) translateY(50vh);
+        opacity: 0;
     }
-    25% {
-        transform: translateY(-8px) rotate(1deg);
+    30% {
+        transform: translateX(-50%) translateY(40vh);
+        opacity: 0.5;
     }
-    75% {
-        transform: translateY(8px) rotate(-1deg);
+    60% {
+        transform: translateX(-50%) translateY(30vh);
+        opacity: 0.8;
     }
-}
-
-@keyframes tailWave {
-    0%, 100% {
-        transform: skewY(0deg);
-    }
-    25% {
-        transform: skewY(-8deg);
-    }
-    75% {
-        transform: skewY(8deg);
+    100% {
+        transform: translateX(-50%) translateY(20vh);
+        opacity: 1;
     }
 }
 
-@keyframes finWave {
+.hero-next-btn:hover {
+    color: var(--text-white);
+    transform: translateX(-50%) translateY(-20px);
+    border-color: var(--text-white);
+}
+
+.hero-next-btn svg {
+    animation: bounceArrow 3s ease-in-out infinite;
+}
+
+@keyframes bounceArrow {
     0%, 100% {
-        transform: scaleY(1);
+        transform: translateY(0);
     }
     50% {
-        transform: scaleY(1.15);
+        transform: translateY(8px);
     }
-}
-
-@keyframes swimAcross1 {
-    0% {
-        left: -15%;
-        top: 20%;
-    }
-    100% {
-        left: 115%;
-        top: 25%;
-    }
-}
-
-@keyframes swimAcross2 {
-    0% {
-        left: 115%;
-        top: 60%;
-        transform: scaleX(-1);
-    }
-    100% {
-        left: -15%;
-        top: 55%;
-        transform: scaleX(-1);
-    }
-}
-
-@keyframes swimAcross3 {
-    0% {
-        left: -15%;
-        top: 70%;
-    }
-    100% {
-        left: 115%;
-        top: 75%;
-    }
-}
-
-@keyframes swimAcross4 {
-    0% {
-        left: 115%;
-        top: 35%;
-        transform: scaleX(-1);
-    }
-    100% {
-        left: -15%;
-        top: 40%;
-        transform: scaleX(-1);
-    }
-}
-
-@keyframes swimAcross5 {
-    0% {
-        left: -15%;
-        top: 85%;
-    }
-    100% {
-        left: 115%;
-        top: 80%;
-    }
-}
-
-.fish-1 {
-    animation: swimAcross1 25s linear infinite;
-    left: -15%;
-}
-
-.fish-2 {
-    animation: swimAcross2 30s linear infinite;
-    animation-delay: 5s;
-    left: 115%;
-}
-
-.fish-3 {
-    animation: swimAcross3 28s linear infinite;
-    animation-delay: 10s;
-    opacity: 0.5;
-    left: -15%;
-}
-
-.fish-4 {
-    animation: swimAcross4 32s linear infinite;
-    animation-delay: 15s;
-    opacity: 0.6;
-    left: 115%;
-}
-
-.fish-5 {
-    animation: swimAcross5 27s linear infinite;
-    animation-delay: 20s;
-    opacity: 0.55;
-    left: -15%;
 }
 
 h1 {
@@ -591,7 +456,25 @@ h1 {
 
 /*   */
 .section {
-    margin-bottom: 40px;
+    min-height: 100vh;
+    margin-bottom: 0;
+    padding: 80px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--background-card);
+    border-radius: 20px;
+    border: 3px solid var(--border-secondary);
+    box-shadow: 0 10px 40px var(--shadow-dark);
+    margin: 40px 0;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.section:hover {
+    border-color: var(--accent-primary);
+    box-shadow: 0 15px 60px var(--shadow-strong);
+    transform: translateY(-5px);
 }
 
 .section:last-child {
@@ -599,24 +482,45 @@ h1 {
 }
 
 #contact.section {
-    padding-bottom: 60px;
+    padding-bottom: 80px;
+}
+
+/* Slide number indicator */
+.section::after {
+    content: attr(data-slide);
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+    font-size: 48px;
+    font-weight: 900;
+    color: rgba(223, 160, 93, 0.15);
+    pointer-events: none;
 }
 
 .section-title {
-    font-size: 28px;
+    font-size: 48px;
     color: var(--accent-primary);
-    margin-bottom: 30px;
-    padding-bottom: 15px;
-    border-bottom: 2px solid var(--accent-primary);
-    font-weight: 600;
+    margin-bottom: 50px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid var(--accent-primary);
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 4px;
+    text-align: center;
+    text-shadow: 2px 2px 4px var(--shadow-dark);
 }
 
 .about-text {
-    line-height: 1.8;
+    line-height: 2.2;
     color: var(--text-secondary);
-    font-size: 16px;
+    font-size: 22px;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+    background: rgba(223, 160, 93, 0.05);
+    border-radius: 15px;
+    border-left: 5px solid var(--accent-primary);
 }
 
 .skills-grid {
@@ -1167,58 +1071,37 @@ h1 {
         height: 450px;
     }
 
-    /* Fish animation on mobile */
-    .fish {
-        opacity: 0.6;
+    .hero-next-btn {
+        bottom: 30px;
+        padding: 12px 30px;
+        font-size: 14px;
     }
 
-    .fish-body {
-        width: 70px;
-        height: 30px;
-        box-shadow:
-            inset 0 -3px 10px rgba(255, 107, 157, 0.3),
-            inset 0 3px 7px rgba(255, 165, 0, 0.2),
-            0 0 25px rgba(255, 107, 157, 0.5),
-            0 0 45px rgba(255, 140, 100, 0.3);
-    }
-
-    .fish-body::before {
-        width: 5px;
-        height: 5px;
-        top: 8px;
-        right: 10px;
-    }
-
-    .fish-tail {
-        border-left: 28px solid rgba(255, 107, 157, 0.6);
-        border-top: 15px solid transparent;
-        border-bottom: 15px solid transparent;
-        left: -22px;
-    }
-
-    .fish-tail::before {
-        border-left: 22px solid rgba(255, 165, 0, 0.5);
-        border-top: 12px solid transparent;
-        border-bottom: 12px solid transparent;
-        left: 3px;
-        top: -10px;
-    }
-
-    .fish-fin {
-        width: 15px;
-        height: 22px;
-        left: 18px;
-        top: 5px;
-    }
-
-    .fish-fin::before {
-        width: 12px;
-        height: 18px;
-        left: -10px;
+    .hero-next-btn svg {
+        width: 20px;
+        height: 20px;
     }
 
     .content {
         padding: 40px 20px;
+    }
+
+    .section {
+        padding: 50px 30px;
+        margin: 20px 0;
+        border-width: 2px;
+    }
+
+    .section::after {
+        font-size: 32px;
+        bottom: 20px;
+        right: 25px;
+    }
+
+    .section-title {
+        font-size: 28px;
+        margin-bottom: 30px;
+        letter-spacing: 2px;
     }
 
     .skills-grid {
@@ -1293,24 +1176,6 @@ h1 {
 }
 
 /* Decorative Elements */
-.section::before {
-    content: '';
-    position: absolute;
-    left: -10px;
-    top: 0;
-    width: 3px;
-    height: 0;
-    background: var(--accent-primary);
-    transition: height 0.5s ease;
-}
-
-.section {
-    position: relative;
-}
-
-.section:hover::before {
-    height: 100px;
-}
 
 /* Animation for elements */
 @keyframes fadeInUp {
