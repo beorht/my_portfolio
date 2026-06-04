@@ -1,0 +1,39 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+:root {
+    --background-primary: #1A1A1A;
+    --background-card: #272727;
+    --text-primary: #E0E0E0;
+    --text-tertiary: #8b949e;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-primary);
+    color: var(--text-primary);
+}
+
+.text {
+    width: 100%;
+    height: 100%;
+    font-size: 60px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.char {
+    background-color: var(--background-card);
+    padding: 0px 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    min-width: 52px;
+    text-align: center;
+    display: inline-block;
+}
