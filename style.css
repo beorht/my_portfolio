@@ -255,7 +255,7 @@ body {
     color: var(--accent-primary);
     text-decoration: none;
     font-size: 24px;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: 2px;
     text-transform: uppercase;
     transition: all 0.4s ease;
@@ -300,45 +300,28 @@ body {
     width: 100vw;
     height: 100vh;
     background: radial-gradient(ellipse 50% 100% at bottom center,
-        rgba(255, 255, 255, 0.3) 0%,
-        rgba(255, 215, 0, 0.25) 3%,
-        rgba(255, 165, 0, 0.2) 6%,
-        rgba(223, 160, 93, 0.18) 10%,
-        rgba(223, 160, 93, 0.15) 15%,
-        rgba(223, 160, 93, 0.12) 20%,
-        rgba(223, 160, 93, 0.1) 25%,
-        rgba(223, 160, 93, 0.08) 30%,
-        rgba(223, 160, 93, 0.06) 35%,
-        rgba(223, 160, 93, 0.04) 45%,
-        rgba(223, 160, 93, 0.02) 55%,
-        rgba(223, 160, 93, 0.01) 70%,
-        transparent 85%);
+        rgba(255, 255, 255, 0.8) 0%,
+        rgba(255, 255, 255, 0.7) 2%,
+        rgba(255, 255, 255, 0.6) 5%,
+        rgba(255, 255, 255, 0.5) 8%,
+        rgba(255, 255, 255, 0.4) 12%,
+        rgba(255, 255, 255, 0.3) 18%,
+        rgba(255, 255, 255, 0.25) 25%,
+        rgba(255, 255, 255, 0.2) 30%,
+        rgba(255, 255, 255, 0.15) 38%,
+        rgba(255, 255, 255, 0.1) 48%,
+        rgba(255, 255, 255, 0.06) 58%,
+        rgba(255, 255, 255, 0.03) 70%,
+        rgba(255, 255, 255, 0.01) 80%,
+        transparent 90%);
     opacity: 0;
     pointer-events: none;
-    filter: blur(50px);
+    filter: blur(60px);
     z-index: 5;
-}
-
-.hero-next-btn:hover::before {
-    /*animation: sunriseGlow 1.5s ease-out forwards;*/
 }
 
 .hero-next-btn:hover::after {
     animation: neonGlowRise 1.8s ease-out forwards;
-}
-
-@keyframes sunriseGlow {
-    0% {
-        transform: translateX(-50%) translateY(150px) scale(0.3);
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateX(-50%) translateY(0) scale(1);
-        opacity: 1;
-    }
 }
 
 @keyframes neonGlowRise {
@@ -401,67 +384,10 @@ h1 {
     overflow: hidden;
 }
 
-/* Skills section */
-.skills-section {
-    padding: 40px 0;
-    font-family: Arial, sans-serif;
-}
-
-.skills-section__title {
-    text-align: center;
-    font-size: 32px;
-    margin-bottom: 20px;
-}
-
-.skills-grid {
-    max-width: 1100px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.skills-card {
-    background: var(--background-card-alt); /* This class seems unused, leaving as is for now */
-    padding: 25px;
-    border-radius: 12px;
-    border: 1px solid var(--border-secondary);
-    transition: all 0.3s ease;
-}
-
-.skills-card:hover {
-    border-color: var(--accent-tertiary);
-    box-shadow: 0 5px 20px var(--shadow-orange);
-    transform: translateY(-5px);
-}
-
-.skills-card__title {
-    margin-bottom: 15px;
-}
-
-.skills-card__subtitle {
-    display: block; /* Ensures strong tag takes its own line if needed */
-    margin-bottom: 5px; /* Adds some space below the subtitle */
-}
-
-.skills-list {
-/*    list-style: none;*/ /* Removes default bullet points */
-    padding-left: 15px;
-    margin: 0;
-}
-
-.skills-list__item {
-    margin-bottom: 5px;
-}
-
-/*   */
 .section {
-    min-height: 100vh;
-    margin-bottom: 0;
-    padding: 80px 60px;
+    padding: 50px 40px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     background: var(--background-card);
     border-radius: 20px;
     border: 3px solid var(--border-secondary);
@@ -604,6 +530,8 @@ h1 {
 }
 
 .project-card {
+    display: block;
+    text-decoration: none;
     background: var(--background-card);
     padding: 25px;
     border-radius: 8px;
@@ -949,9 +877,9 @@ h1 {
     display: block;
     color: var(--text-secondary);
     text-decoration: none;
-    font-size: 18px;
+    font-size: 15px;
     text-transform: uppercase;
-    letter-spacing: 3px;
+    letter-spacing: 1.5px;
     transition: all 0.3s ease;
     font-weight: 500;
     writing-mode: vertical-rl;
@@ -960,13 +888,13 @@ h1 {
 
 .sidebar-nav a:hover {
     color: var(--accent-primary);
-    letter-spacing: 4px;
+    letter-spacing: 2.5px;
 }
 
 .sidebar-nav a.active {
     color: var(--accent-primary);
     font-weight: 700;
-    letter-spacing: 4px;
+    letter-spacing: 2.7px;
 }
 
 /* Top Navigation */
@@ -1186,6 +1114,27 @@ h1 {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes flipInX {
+    from {
+        transform: perspective(400px) rotateX(90deg);
+        opacity: 0;
+    }
+    40% {
+        transform: perspective(400px) rotateX(-20deg);
+    }
+    60% {
+        transform: perspective(400px) rotateX(10deg);
+        opacity: 1;
+    }
+    80% {
+        transform: perspective(400px) rotateX(-5deg);
+    }
+    to {
+        transform: perspective(400px) rotateX(0deg);
+        opacity: 1;
     }
 }
 
