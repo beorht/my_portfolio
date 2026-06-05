@@ -1,18 +1,17 @@
 const target = ['B', 'E', 'H', 'R', 'U', 'Z'];
 const chars = document.querySelectorAll('.char');
-const symbols = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*'.split('');
+const symbols = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
 function getRandom() {
     return symbols[Math.floor(Math.random() * symbols.length)];
 }
 
-function decodeChar(el, finalChar, settleTime) {
+function animateChar(el, finalChar, settleTime) {
     el.style.color = 'var(--text-tertiary)';
 
     const startTime = performance.now();
     const startInterval = 30;
     const endInterval = 150;
-
     let lastTime = startTime;
 
     function step(now) {
@@ -22,14 +21,13 @@ function decodeChar(el, finalChar, settleTime) {
         const delta = now - lastTime;
 
         if (delta >= interval) {
-            if (progress < 1) {
-                el.textContent = getRandom();
-                lastTime = now;
-            } else {
+            if (finalChar && progress >= 1) {
                 el.textContent = finalChar;
                 el.style.color = '';
                 return;
             }
+            el.textContent = getRandom();
+            lastTime = now;
         }
         requestAnimationFrame(step);
     }
@@ -37,8 +35,9 @@ function decodeChar(el, finalChar, settleTime) {
 }
 
 function run() {
+    const settleInterval = 600;
     chars.forEach((char, i) => {
-        decodeChar(char, target[i], (i + 1) * 600);
+        animateChar(char, target[i], (i + 1) * settleInterval);
     });
 }
 
