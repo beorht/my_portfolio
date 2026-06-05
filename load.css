@@ -35,6 +35,46 @@ html, body {
 }
 
 .char {
+    display: inline-block;
     opacity: 1;
-    transition: color 0.4s ease;
+    -webkit-font-smoothing: antialiased;
+    /* longer transitions for a more deliberate, smooth feel */
+    transition: color 0.28s ease, transform 0.28s cubic-bezier(.2,.8,.2,1), opacity 0.28s ease, filter 0.28s ease;
+    will-change: transform, opacity, filter, color;
+}
+
+/* initial blurred state before animation begins */
+.char.blurred {
+    filter: blur(3.2px);
+    opacity: 0.86;
+    transform: translateY(-6px) scale(0.992);
+}
+
+.char.random {
+    color: var(--text-tertiary);
+    transform: translateY(-4px) scale(0.995);
+    opacity: 0.9;
+    filter: blur(1.2px);
+}
+
+.char.final {
+    color: var(--text-primary);
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    filter: blur(0);
+}
+
+/* Fine-grained crossfade for per-replacement transitions */
+.fade-out {
+    opacity: 0;
+    filter: blur(2.4px) scale(0.996);
+    transform: translateY(-5px) scale(0.996);
+    transition-duration: 140ms;
+}
+
+.fade-in {
+    opacity: 1;
+    filter: blur(0) scale(1);
+    transform: translateY(0) scale(1);
+    transition-duration: 260ms;
 }
