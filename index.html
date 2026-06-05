@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV - Разработчик</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="load.css">
     <script>
         // Prevent auto-scroll on page load
         if (history.scrollRestoration) {
@@ -16,6 +17,20 @@
     </script>
 </head>
 <body>
+    <!-- Loader overlay (initial full-screen) -->
+    <div id="loader-overlay" aria-hidden="false">
+        <div class="text" aria-hidden="true">
+            <span class="char">B</span>
+            <span class="char">E</span>
+            <span class="char">H</span>
+            <span class="char">R</span>
+            <span class="char">U</span>
+            <span class="char">Z</span>
+        </div>
+    </div>
+
+    <!-- Site root wrapped so it can be blurred/hidden while loader runs -->
+    <div id="site-root" class="site-blur">
     <!-- Sidebar Navigation -->
     <nav class="sidebar-nav">
         <a href="#main">MAIN</a>
@@ -352,7 +367,9 @@
                 Посмотреть GitHub профиль
             </a>
         </div>
-    </div>
+    </div> <!-- end of site-root -->
+
+    <script src="load.js"></script>
 
     <script>
         window.addEventListener('load', function() {

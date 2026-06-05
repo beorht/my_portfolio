@@ -32,13 +32,16 @@ async function doReplace(el, glyph, opts = {}) {
     el._replacing = false;
 }
 
-function animateChar(el, finalChar, settleTime) {
+function animateChar(el, finalChar, settleTime, opts = {}) {
     el.classList.add('random');
     el.classList.remove('final');
 
     const startTime = performance.now();
-    const startInterval = 20; // slightly slower randomization start
-    const endInterval = 140;  // slower settling for longer duration
+    // choose faster timings for non-last letters, keep slow for last (opts provided)
+    const isLast = opts && (opts.finalFadeOut || opts.finalFadeIn);
+    const startInterval = isLast ? 20 : 8; // non-last starts faster
+    const endInterval = isLast ? 140 : 60; // non-last settles quicker
+    const randomReplaceOpts = isLast ? { fadeOut: 80, fadeIn: 160 } : { fadeOut: 30, fadeIn: 60 };
     let lastTime = startTime;
 
     function step(now) {
@@ -49,8 +52,12 @@ function animateChar(el, finalChar, settleTime) {
 
         if (delta >= interval) {
             if (finalChar && progress >= 1) {
-                // final settle with a smooth replace and unblur
-                doReplace(el, finalChar).then(() => {
+                // Use slower, smoother timings for final replacement if provided
+                const finalOpts = {
+                    fadeOut: (opts && opts.finalFadeOut) || 100,
+                    fadeIn: (opts && opts.finalFadeIn) || 200
+                };
+                doReplace(el, finalChar, finalOpts).then(() => {
                     el.classList.remove('random');
                     el.classList.add('final');
                 });
@@ -58,7 +65,7 @@ function animateChar(el, finalChar, settleTime) {
             }
 
             const glyph = getRandom();
-            if (!el._replacing) doReplace(el, glyph, { fadeOut: 80, fadeIn: 160 });
+            if (!el._replacing) doReplace(el, glyph, randomReplaceOpts);
             lastTime = now;
         }
 
@@ -79,8 +86,13 @@ function run() {
         setTimeout(() => {
             char.classList.remove('blurred');
             const glyph = getRandom();
-            // moderate replace for initial word
-            doReplace(char, glyph, { fadeOut: 80, fadeIn: 160 });
+            const isLast = (i === chars.length - 1);
+            // faster initial replace for non-last; keep slower for last
+            if (isLast) {
+                doReplace(char, glyph, { fadeOut: 80, fadeIn: 160 });
+            } else {
+                doReplace(char, glyph, { fadeOut: 30, fadeIn: 60 });
+            }
         }, i * 40 + 40);
     });
 
@@ -88,11 +100,17 @@ function run() {
     const initialDisplayTime = chars.length * 40 + 240; // wait until initial fills finish
     setTimeout(() => {
         chars.forEach((char, i) => {
-            // each char will now animate to its final target (BEHRUZ)
-            animateChar(char, target[i], (i + 1) * settleInterval);
+            // determine if this is the last character
+            const isLast = (i === chars.length - 1);
+            const opts = isLast ? { finalFadeOut: 300, finalFadeIn: 600 } : undefined;
 
-            // Safety fallback: force final glyph after expected settle time plus larger margin
-            const fallback = initialDisplayTime + (i + 1) * settleInterval + 360;
+            // each char will now animate to its final target (BEHRUZ)
+            animateChar(char, target[i], (i + 1) * settleInterval, opts);
+
+            // Safety fallback: force final glyph after expected settle time plus margin
+            const defaultMargin = 360;
+            const lastExtra = isLast ? ((opts.finalFadeOut || 0) + (opts.finalFadeIn || 0) + 200) : 0;
+            const fallback = initialDisplayTime + (i + 1) * settleInterval + defaultMargin + lastExtra;
             setTimeout(() => {
                 // cancel any replacing flag and set to final explicitly
                 char._replacing = false;
@@ -102,6 +120,31 @@ function run() {
             }, fallback);
         });
     }, initialDisplayTime);
+
+    // schedule loader finish after the last fallback has run
+    const defaultMargin = 360;
+    const lastFinalFadeOut = 300;
+    const lastFinalFadeIn = 600;
+    const lastExtra = lastFinalFadeOut + lastFinalFadeIn + 200; // matches per-char calculation for last char
+    const lastFallback = initialDisplayTime + (chars.length) * settleInterval + defaultMargin + lastExtra;
+
+    function finishLoader() {
+        const overlay = document.getElementById('loader-overlay');
+        const site = document.getElementById('site-root');
+        if (site) {
+            site.classList.remove('site-blur');
+            site.classList.add('site-clear');
+        }
+        if (overlay) {
+            overlay.classList.add('hidden');
+            // remove overlay from DOM after transition
+            overlay.addEventListener('transitionend', function onEnd() {
+                overlay.removeEventListener('transitionend', onEnd);
+                if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+            });
+        }
+    }
+    setTimeout(finishLoader, lastFallback + 1300);
 }
 
 document.addEventListener('DOMContentLoaded', run);
