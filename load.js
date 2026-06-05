@@ -6,44 +6,40 @@ function getRandom() {
     return symbols[Math.floor(Math.random() * symbols.length)];
 }
 
-function decodeChar(el, finalChar) {
-    return new Promise(resolve => {
-        el.style.opacity = '1';
+function decodeChar(el, finalChar, settleTime) {
+    el.style.color = 'var(--text-tertiary)';
 
-        const totalDuration = 1100; // мс на одну букву
-        const startInterval = 40;  // быстро в начале
-        const endInterval = 180;   // медленно в конце
+    const startTime = performance.now();
+    const startInterval = 30;
+    const endInterval = 150;
 
-        let elapsed = 0;
-        let lastTime = performance.now();
+    let lastTime = startTime;
 
-        function step(now) {
-            const progress = Math.min(elapsed / totalDuration, 1);
-            // замедление по квадратичной кривой
-            const interval = startInterval + (endInterval - startInterval) * (progress * progress);
-            const delta = now - lastTime;
+    function step(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / settleTime, 1);
+        const interval = startInterval + (endInterval - startInterval) * (progress * progress);
+        const delta = now - lastTime;
 
-            if (delta >= interval) {
-                if (progress < 1) {
-                    el.textContent = getRandom();
-                    elapsed += delta;
-                    lastTime = now;
-                } else {
-                    el.textContent = finalChar;
-                    resolve();
-                    return;
-                }
+        if (delta >= interval) {
+            if (progress < 1) {
+                el.textContent = getRandom();
+                lastTime = now;
+            } else {
+                el.textContent = finalChar;
+                el.style.color = '';
+                return;
             }
-            requestAnimationFrame(step);
         }
         requestAnimationFrame(step);
-    });
+    }
+    requestAnimationFrame(step);
 }
 
-async function run() {
-    for (let i = 0; i < target.length; i++) {
-        await decodeChar(chars[i], target[i]);
-    }
+function run() {
+    chars.forEach((char, i) => {
+        decodeChar(char, target[i], (i + 1) * 600);
+    });
 }
 
 document.addEventListener('DOMContentLoaded', run);
